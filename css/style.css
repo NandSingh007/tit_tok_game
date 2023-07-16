@@ -1,0 +1,261 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --cell-size: 100px;
+  --mark-size: calc(var(--cell-size) * .9);
+}
+
+body {
+  margin: 0;
+  padding: 0px;
+}
+
+.box1 {
+  padding: 5px 0px;
+  background-image: linear-gradient(rgb(116, 159, 222), rgb(125, 197, 186));
+  text-align: center;
+}
+
+.box1 ol li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+.box1 li a {
+  color: white;
+  font-size: 23px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  text-decoration: none;
+}
+
+.board {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto)
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.cell.circle::before {
+  background-color: black;
+}
+
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  background-color: rgb(195, 107, 107);
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  content: '';
+  position: absolute;
+  width: calc(var(--mark-size) * .15);
+  height: var(--mark-size);
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.circle):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::before,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.circle::before,
+.board.circle .cell:not(.x):not(.circle):hover::before {
+  width: var(--mark-size);
+  height: var(--mark-size);
+}
+
+.cell.circle::after,
+.board.circle .cell:not(.x):not(.circle):hover::after {
+  width: calc(var(--mark-size) * .7);
+  height: calc(var(--mark-size) * .7);
+  background-color: white;
+}
+
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .9);
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 5rem;
+  flex-direction: column;
+}
+
+.winning-message button {
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: .25em .5em;
+  cursor: pointer;
+}
+
+.winning-message button:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+.winning-message.show {
+  display: flex;
+}
+
+/* Open index.html in Browser
+  Let's open the index.html file in the browser and you will be able to see the following screen:
+  
+  
+  More Free JavaScript Projects with Source Code
+  JavaScript Tic Tac Toe Game
+  JavaScript Project - Modal Box
+  JavaScript Project - Modal Box
+  JavaScript Project - Password Generator
+  JavaScript Project - Weather App
+  JavaScript Project - Todo App
+  JavaScript Project - Notes App
+  JavaScript Project - Movie App
+  JavaScript Project - Drawing App
+  JavaScript Project - Countdown Timer
+  Breakout Game with JavaScript, HTML, and CSS
+  Exchange Rate Project with JavaScript, HTML, and CSS
+  Expense Tracker Project with JavaScript, HTML, and CSS
+  Form Validator with JavaScript, HTML, and CSS
+  LyricsSearch App with JavaScript, HTML and CSS
+  Movie Seat Booking Project with JavaScript, HTML, and CSS
+  Free Spring Boot Tutorial - 5 Hours Full Course
+  Watch this course on YouTube at Spring Boot Tutorial | Fee 5 Hours Full Course
+  
+  
+  javascript javascript-projects
+  
+   
+  
+  
+   
+  Subscribe to Our Top YouTube Channel (70K+ Subscribers)
+  
+  My Udemy course - Testing Spring Boot Application with JUnit and Mockito
+  
+  
+  My Udemy Bestseller Course - Building Real-Time REST APIs with Spring Boot and Deploy on AWS Cloud
+  
+  
+  My Udemy course - Learn Spring Data JPA with Hibernate
+  
+  
+  
+   
+  
+   
+  Best Video on YouTube (Most Liked)
+  
+  JavaScript Projects
+  JavaScript Tic Tac Toe Game
+  JavaScript Project - Modal Box
+  JavaScript Calculator Project
+  JavaScript Project - Password Generator
+  JavaScript Project - Weather App
+  JavaScript Project - Todo App
+  JavaScript Project - Notes App
+  JavaScript Project - Movie App
+  JavaScript Project - Drawing App
+  JavaScript Project - Countdown Timer
+  Submit Source Code Example
+  Submit Source Code Example
+   Powered by Blogger
+  Free Courses on YouTube
+  Java Lambda Expressions
+  Java Collections Framework
+  Java Functional Interfaces
+  Spring Boot Tutorial
+  5 Spring Boot Projects in 10 Hours
+  Spring Boot + Angular Full Stack
+  Spring Boot React Full Stack
+  Spring MVC Tutorial
+  My Udemy Courses
+  Building Real-Time REST APIs with Spring Boot
+  Testing Spring Boot Application with JUnit and Mockito
+  Learn Spring Data JPA with Hibernate: The Masterclass
+  Learn Spring Boot: The Masterclass
+  Connect
+  YouTube
+  Twitter
+  Facebook
+  GitHub
+  Linkedin
+  StackOverflow
+  Dev Tools
+  JSON Formatter | Beautifier
+  Online HTML Editor and Compiler
+  Base64 Encode Online
+  Base64 Decode Online
+  URL Encoder Online
+  URL Decoder Online
+  
+  Follow
+  ×
